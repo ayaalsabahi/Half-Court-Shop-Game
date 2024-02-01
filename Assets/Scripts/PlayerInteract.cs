@@ -10,19 +10,24 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField]
     private float castDistance = 3f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        // camera = GameObject.Find("CameraHolder").transform.GetChild(0).gameObject.Camera;
-        // cameraLocation = this.gameObject.transform.GetChild(1);
-    }
+
+    [SerializeField]
+    private LayerMask mask;
 
     // Update is called once per frame
     void Update()
     {
         Ray ray = new Ray(camera.transform.position, camera.transform.forward);
-        // Ray ray = new Ray(cameraLocation.transform.position, cameraLocation.transform.forward);
-        // Debug.DrawRay(ray.origin, ray.direction * castDistance);
+        Debug.DrawRay(ray.origin, ray.direction * castDistance);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, castDistance, mask))
+        {
+            if (hitInfo.collider.GetComponent<Interactable>() != null)
+            {
+                Debug.Log(hitInfo.collider.GetComponent<Interactable>().promptMessage);
+            }
+        }
+
 
     }
 }
