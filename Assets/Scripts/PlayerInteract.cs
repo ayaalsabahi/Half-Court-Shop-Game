@@ -24,7 +24,13 @@ public class PlayerInteract : MonoBehaviour
         {
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
-                Debug.Log(hitInfo.collider.GetComponent<Interactable>().promptMessage);
+                Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+                //Debug.Log(interactable.promptMessage);
+                if(Input.GetMouseButtonDown(0) && interactable.name == "Pepperoni")
+                {
+                    // interactable.BaseInteract();
+                    Debug.Log("touching Pepperoni");
+                }
             }
         }
 
