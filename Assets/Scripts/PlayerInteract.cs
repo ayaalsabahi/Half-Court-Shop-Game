@@ -25,7 +25,7 @@ public class PlayerInteract : MonoBehaviour
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
-                //Debug.Log(interactable.promptMessage);
+                Debug.Log(interactable.promptMessage);
                 if(Input.GetMouseButtonDown(0) && interactable.name == "Pepperoni")
                 {
                     // interactable.BaseInteract();
