@@ -37,9 +37,10 @@ public class PlayerController : MonoBehaviour
     public bool isCharging = false;
     private float chargeTime = 0f;
 
-    private float throwForce =40f;
+    private float throwForce =5f;
 
     private float maxForce = 50f;
+    private float maxTime = 50f;
 
     [SerializeField]
     private Transform throwPosition;
@@ -71,20 +72,35 @@ public class PlayerController : MonoBehaviour
             rb.drag = 0;
         }
 
-        if(inHand != "" && Input.GetMouseButtonDown(0))
-        // if(inHand != "" && Input.GetKey(KeyCode.F))
-        {
+        // if(inHand != "" && Input.GetMouseButtonDown(0))
+        // // if(inHand != "" && Input.GetKey(KeyCode.F))
+        // {
             
+        //     StartThrow();
+        // }
+        // if(inHand != "" && isCharging)
+        // {
+        //     ChargeThrow();
+        //     Debug.Log("doin it");
+        // }
+        // if(inHand != "" && Input.GetMouseButtonDown(0))
+        // // if(inHand != "" && Input.GetKey(KeyCode.G))
+        // {
+        //     ReleaseBall();
+        // }
+
+        if(inHand != "" && Input.GetKeyDown(KeyCode.Mouse0))
+        {
             StartThrow();
         }
         if(isCharging)
         {
+            Debug.Log("charge");
             ChargeThrow();
-            Debug.Log("doin it");
         }
-        if(inHand != "" && Input.GetMouseButtonDown(0))
-        // if(inHand != "" && Input.GetKey(KeyCode.F))
+        if(inHand != "" && Input.GetKeyUp(KeyCode.Mouse0))
         {
+            Debug.Log("throw");
             ReleaseBall();
         }
     }
@@ -154,6 +170,7 @@ public class PlayerController : MonoBehaviour
     private void ReleaseBall()
     {
         ThrowObj(Mathf.Min(chargeTime * throwForce, maxForce));
+        Debug.Log(chargeTime);
         isCharging = false;
         inHand = "";
     }

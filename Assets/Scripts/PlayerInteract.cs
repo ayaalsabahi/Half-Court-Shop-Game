@@ -29,7 +29,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 Debug.Log(interactable.promptMessage);
-                if(Input.GetMouseButtonDown(0) && interactable.name == "Pepperoni")
+                if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E)) && interactable.name == "Pepperoni")
                 {
                     GameObject ingredient = hitInfo.collider.gameObject;
                     //interactable.BaseInteract();
