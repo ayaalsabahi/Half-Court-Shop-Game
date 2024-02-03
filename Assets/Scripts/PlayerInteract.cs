@@ -29,11 +29,11 @@ public class PlayerInteract : MonoBehaviour
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 Debug.Log(interactable.promptMessage);
-                if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E)) && interactable.name == "Pepperoni")
+                if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E)) && interactable.name != "Oven")
                 {
                     GameObject ingredient = hitInfo.collider.gameObject;
                     //interactable.BaseInteract();
-                    Debug.Log("touching " + ingredient);
+                    Debug.Log("pick up " + ingredient);
                     player.GetComponent<PlayerController>().inHand = interactable.name;
                     Destroy(ingredient);
                 }
