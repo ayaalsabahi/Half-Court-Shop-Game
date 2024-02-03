@@ -33,7 +33,22 @@ public class PlayerController : MonoBehaviour
 
 
     //Holding and Throwing
-    public string inHand;
+    public string inHand = "";
+    public bool isCharging = false;
+    private float chargeTime = 0f;
+
+    private float throwForce =40f;
+
+    private float maxForce = 50f;
+
+    [SerializeField]
+    private Transform throwPosition;
+    private Vector3 throwDirection = new Vector3(0,1,0);
+    
+    public GameObject thingToThrow;
+
+
+
 
     
     void Start()
@@ -54,6 +69,23 @@ public class PlayerController : MonoBehaviour
         }
         else{
             rb.drag = 0;
+        }
+
+        if(inHand != "" && Input.GetMouseButtonDown(0))
+        // if(inHand != "" && Input.GetKey(KeyCode.F))
+        {
+            
+            StartThrow();
+        }
+        if(isCharging)
+        {
+            ChargeThrow();
+            Debug.Log("doin it");
+        }
+        if(inHand != "" && Input.GetMouseButtonDown(0))
+        // if(inHand != "" && Input.GetKey(KeyCode.F))
+        {
+            ReleaseBall();
         }
     }
 
@@ -106,5 +138,38 @@ public class PlayerController : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    private void StartThrow()
+    {
+        isCharging = true;
+        chargeTime = 0f;
+    }
+    
+    private void ChargeThrow()
+    {
+        chargeTime += Time.deltaTime;
+    }
+
+    private void ReleaseBall()
+    {
+        ThrowObj(Mathf.Min(chargeTime * throwForce, maxForce));
+        isCharging = false;
+        inHand = "";
+    }
+
+    private void ThrowObj(float force)
+    {
+        Camera cam = GetComponent<PlayerInteract>().cam;
+
+        Vector3 spawnPoint = throwPosition.position + cam.transform.forward;
+
+        GameObject tossable = Instantiate(thingToThrow, spawnPoint, cam.transform.rotation);
+        Debug.Log(tossable);
+        Rigidbody itembody = tossable.GetComponent<Rigidbody>();
+        Vector3 finalThrowDirection = (cam.transform.forward  + throwDirection).normalized;
+        
+        itembody.AddForce(finalThrowDirection * force, ForceMode.VelocityChange);
+
     }
 }

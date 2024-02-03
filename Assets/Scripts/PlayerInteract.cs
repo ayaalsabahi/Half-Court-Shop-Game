@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public Camera camera;
+    public Camera cam;
     // private Transform cameraLocation;
 
 
@@ -20,7 +20,7 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = new Ray(camera.transform.position, camera.transform.forward);
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * castDistance);
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, castDistance, mask))
