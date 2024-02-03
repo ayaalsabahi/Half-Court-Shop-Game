@@ -14,6 +14,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField]
     private LayerMask mask;
 
+    [SerializeField]
+    private GameObject player;
+
     // Update is called once per frame
     void Update()
     {
@@ -28,8 +31,11 @@ public class PlayerInteract : MonoBehaviour
                 Debug.Log(interactable.promptMessage);
                 if(Input.GetMouseButtonDown(0) && interactable.name == "Pepperoni")
                 {
-                    // interactable.BaseInteract();
-                    Debug.Log("touching Pepperoni");
+                    GameObject ingredient = hitInfo.collider.gameObject;
+                    //interactable.BaseInteract();
+                    Debug.Log("touching " + ingredient);
+                    player.GetComponent<PlayerController>().inHand = interactable.name;
+                    Destroy(ingredient);
                 }
             }
         }

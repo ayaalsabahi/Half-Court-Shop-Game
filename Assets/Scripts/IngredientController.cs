@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IngredientController : Interactable
 {
+    public LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,18 @@ public class IngredientController : Interactable
 
     protected override void Interact()
     {
-        DestroyObject(gameObject);
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((layerMask.value & (1 << other.transform.gameObject.layer)) > 0)
+        {
+            Debug.Log("Hit with Layermask");
+            Destroy(gameObject);
+        }
+        else {
+            Debug.Log("Not in Layermask");
+        }
     }
 }

@@ -23,13 +23,19 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //orientation
+    //Orientation
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+
+    //Holding and Throwing
+    public string inHand;
+
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
