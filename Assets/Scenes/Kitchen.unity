@@ -529,7 +529,7 @@ MonoBehaviour:
   isCharging: 0
   throwPosition: {fileID: 1445471214}
   thingToThrow: {fileID: 4423570143370368594, guid: 06d5acff35533492cba7d155414f6484, type: 3}
-  points: 0
+  score: 0
 --- !u!114 &513708278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,7 +869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 300}
+  m_AnchoredPosition: {x: 650, y: 400}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &936370339
