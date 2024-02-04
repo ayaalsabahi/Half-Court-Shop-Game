@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ball
   - Pepperoni
+  - Pizza
+  - Mushroom
   layers:
   - Default
   - TransparentFX

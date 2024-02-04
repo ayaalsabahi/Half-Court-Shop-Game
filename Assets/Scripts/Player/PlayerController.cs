@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     private Transform throwPosition;
     private Vector3 throwDirection = new Vector3(0,1,0);
     
+    [SerializeField]
+    public GameObject[] throwableItems;
     public GameObject thingToThrow;
 
     bool easyModeOn = true;
@@ -89,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
         if(inHand != "" && Input.GetKeyDown(KeyCode.Mouse0))
         {
+            FindThingToThrow();
             StartThrow();
 
         }
@@ -197,7 +200,7 @@ public class PlayerController : MonoBehaviour
         Vector3 spawnPoint = throwPosition.position + cam.transform.forward;
 
         GameObject tossable = Instantiate(thingToThrow, spawnPoint, cam.transform.rotation);
-        Debug.Log(tossable);
+        // Debug.Log(tossable);
         Rigidbody itembody = tossable.GetComponent<Rigidbody>();
         Vector3 finalThrowDirection = (cam.transform.forward  + throwDirection).normalized;
         
@@ -215,5 +218,19 @@ public class PlayerController : MonoBehaviour
             points[i] = origin + velocity * time + .05f * Physics.gravity * time * time;
         }
         trajectoryLine.SetPositions(points);
+    }
+
+    private void FindThingToThrow()
+    {
+        for(int i = 0; i < throwableItems.Length; i++)
+        {
+            Debug.Log("checking throw list for " + inHand);
+            
+            if (throwableItems[i].tag == inHand)
+            {
+                Debug.Log("found it "+ throwableItems[i].tag);
+                thingToThrow = throwableItems[i];
+            }
+        }
     }
 }
