@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
-
     Rigidbody rb;
 
 
@@ -47,6 +46,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 throwDirection = new Vector3(0,1,0);
     
     public GameObject thingToThrow;
+
+    //Points
+    [SerializeField]
+    public int points;
 
 
 
@@ -71,23 +74,6 @@ public class PlayerController : MonoBehaviour
         else{
             rb.drag = 0;
         }
-
-        // if(inHand != "" && Input.GetMouseButtonDown(0))
-        // // if(inHand != "" && Input.GetKey(KeyCode.F))
-        // {
-            
-        //     StartThrow();
-        // }
-        // if(inHand != "" && isCharging)
-        // {
-        //     ChargeThrow();
-        //     Debug.Log("doin it");
-        // }
-        // if(inHand != "" && Input.GetMouseButtonDown(0))
-        // // if(inHand != "" && Input.GetKey(KeyCode.G))
-        // {
-        //     ReleaseBall();
-        // }
 
         if(inHand != "" && Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -170,7 +156,6 @@ public class PlayerController : MonoBehaviour
     private void ReleaseBall()
     {
         ThrowObj(Mathf.Min(chargeTime * throwForce, maxForce));
-        Debug.Log(chargeTime);
         isCharging = false;
         inHand = "";
     }
