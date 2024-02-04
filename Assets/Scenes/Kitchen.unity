@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredient: {fileID: 6632550930376213050, guid: 3bf0d85856e754a05b99c89e217bedc9, type: 3}
-  maxIngredients: 5
+  maxIngredients: 2
   ingredientTag: Mushroom
 --- !u!1 &207222538
 GameObject:
@@ -2349,7 +2349,7 @@ Transform:
   m_GameObject: {fileID: 1548030529}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7, y: -3.762, z: -3.08}
+  m_LocalPosition: {x: -5.27, y: -3.762, z: -3.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3317,7 +3317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredient: {fileID: 4423570143370368594, guid: 06d5acff35533492cba7d155414f6484, type: 3}
-  maxIngredients: 5
+  maxIngredients: 20
   ingredientTag: Pepperoni
 --- !u!1 &2027127090
 GameObject:
