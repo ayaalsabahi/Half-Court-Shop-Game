@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -49,7 +50,8 @@ public class PlayerController : MonoBehaviour
 
     //Points
     [SerializeField]
-    public int points;
+    public int score;
+    TMP_Text scoreText; 
 
 
 
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
     }
 
     void Update()
@@ -89,6 +93,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("throw");
             ReleaseBall();
         }
+
+        scoreText.text = "Score: " + score.ToString();
     }
 
     void FixedUpdate()

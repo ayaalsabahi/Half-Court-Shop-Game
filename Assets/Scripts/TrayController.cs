@@ -15,9 +15,9 @@ public class TrayController : MonoBehaviour
     {
         if (other.tag == "Pepperoni")
         {
-            Debug.Log("points before " + playerController.points);
-            playerController.points += 1;
-            Debug.Log("points after " + playerController.points);
+            Debug.Log("points before " + playerController.score);
+            playerController.score += 1;
+            Debug.Log("points after " + playerController.score);
             
         }
     }
