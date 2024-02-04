@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -48,6 +49,12 @@ public class PlayerController : MonoBehaviour
     
     public GameObject thingToThrow;
 
+    bool easyModeOn = true;
+    
+    [SerializeField]
+    private LineRenderer trajectoryLine;
+    Camera cam;
+
     //Points
     [SerializeField]
     public int score;
@@ -63,6 +70,7 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
 
         scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
+        cam = GetComponent<PlayerInteract>().cam;
     }
 
     void Update()
@@ -82,11 +90,16 @@ public class PlayerController : MonoBehaviour
         if(inHand != "" && Input.GetKeyDown(KeyCode.Mouse0))
         {
             StartThrow();
+
         }
         if(isCharging)
         {
             Debug.Log("charge");
             ChargeThrow();
+            // if(easyModeOn)
+            // {
+            //     Vector3 ingredientVelocity = ();
+            // }
         }
         if(inHand != "" && Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -152,11 +165,20 @@ public class PlayerController : MonoBehaviour
     {
         isCharging = true;
         chargeTime = 0f;
+        if(easyModeOn)
+        {
+            trajectoryLine.enabled = true;
+        }
     }
     
     private void ChargeThrow()
     {
         chargeTime += Time.deltaTime;
+        if(easyModeOn)
+        {
+            Vector3 itemVelocity = (cam.transform.forward + throwDirection).normalized * Mathf.Min(chargeTime * throwForce, maxForce);
+            ShowTrajectory(throwPosition.position + throwPosition.forward, itemVelocity);
+        }
     }
 
     private void ReleaseBall()
@@ -164,12 +186,14 @@ public class PlayerController : MonoBehaviour
         ThrowObj(Mathf.Min(chargeTime * throwForce, maxForce));
         isCharging = false;
         inHand = "";
+         if(easyModeOn)
+        {
+            trajectoryLine.enabled = false;
+        }
     }
 
     private void ThrowObj(float force)
     {
-        Camera cam = GetComponent<PlayerInteract>().cam;
-
         Vector3 spawnPoint = throwPosition.position + cam.transform.forward;
 
         GameObject tossable = Instantiate(thingToThrow, spawnPoint, cam.transform.rotation);
@@ -179,5 +203,17 @@ public class PlayerController : MonoBehaviour
         
         itembody.AddForce(finalThrowDirection * force, ForceMode.VelocityChange);
 
+    }
+
+    private void ShowTrajectory(Vector3 origin, Vector3 velocity)
+    {
+        Vector3[] points = new Vector3[200];
+        trajectoryLine.positionCount = points.Length;
+        for(int i = 0; i < points.Length; i++)
+        {
+            float time = i * 0.1f;
+            points[i] = origin + velocity * time + .05f * Physics.gravity * time * time;
+        }
+        trajectoryLine.SetPositions(points);
     }
 }
