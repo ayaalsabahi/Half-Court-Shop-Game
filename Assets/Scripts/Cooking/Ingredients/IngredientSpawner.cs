@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PepperoniSpawner : MonoBehaviour
+public class IngredientSpawner : MonoBehaviour
 {
-    public GameObject pepperoni;
-    public int maxPepperonis = 5;
+    [SerializeField]
+    public GameObject ingredient;
 
-    private List<GameObject> currentPepperonis = new List<GameObject>();
+    [SerializeField]
+    public int maxIngredients = 5;
+
+    [SerializeField]
+    public string ingredientTag;
+
+    private List<GameObject> currentIngredients = new List<GameObject>();
 
     private void Update()
     {
         // Check if we need to spawn new pepperonis
-        if (currentPepperonis.Count < maxPepperonis)
+        if (currentIngredients.Count < maxIngredients)
         {
             SpawnPepperoni();
         }
@@ -22,10 +28,9 @@ public class PepperoniSpawner : MonoBehaviour
     {
         // Instantiate a new pepperoni inside the bounds of the collider
         Vector3 spawnPosition = GetRandomPositionInSpawner();
-        GameObject newPepperoni = Instantiate(pepperoni, spawnPosition, Quaternion.identity, transform);
-        newPepperoni.layer = LayerMask.NameToLayer("Interactable");
-        newPepperoni.tag = "Pepperoni";
-        currentPepperonis.Add(newPepperoni);
+        GameObject newIngredient = Instantiate(ingredient, spawnPosition, Quaternion.identity, transform);
+        newIngredient.layer = LayerMask.NameToLayer("Interactable");
+        currentIngredients.Add(newIngredient);
     }
 
     private Vector3 GetRandomPositionInSpawner()
@@ -41,17 +46,17 @@ public class PepperoniSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pepperoni"))
+        if (other.gameObject.CompareTag(ingredientTag))
         {
-            currentPepperonis.Add(other.gameObject);
+            currentIngredients.Add(other.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Pepperoni"))
+        if (other.gameObject.CompareTag(ingredientTag))
         {
-            currentPepperonis.Remove(other.gameObject);
+            currentIngredients.Remove(other.gameObject);
         }
     }
 }
