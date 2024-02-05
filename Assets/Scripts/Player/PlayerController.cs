@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
+        //scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
         cam = GetComponent<PlayerInteract>().cam;
     }
 
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
             ReleaseBall();
         }
 
-        scoreText.text = "Score: " + score.ToString();
+        //scoreText.text = "Score: " + score.ToString();
     }
 
     void FixedUpdate()
