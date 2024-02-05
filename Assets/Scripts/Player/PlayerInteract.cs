@@ -37,6 +37,11 @@ public class PlayerInteract : MonoBehaviour
                     player.GetComponent<PlayerController>().inHand = interactable.tag;
                     Destroy(ingredient);
                 }
+                if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E)) && interactable.name == "Oven")
+                {
+                    GameObject ingredient = hitInfo.collider.gameObject;
+                    interactable.BaseInteract();
+                }
             }
         }
 

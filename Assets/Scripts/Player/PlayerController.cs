@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShowTrajectory(Vector3 origin, Vector3 velocity)
     {
-        Vector3[] points = new Vector3[200];
+        Vector3[] points = new Vector3[100];
         trajectoryLine.positionCount = points.Length;
         for(int i = 0; i < points.Length; i++)
         {
