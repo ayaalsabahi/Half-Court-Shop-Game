@@ -14,4 +14,7 @@ RELEASE NOTES:
 pepperoni using force 
 	2. Contains some grey boxing for the kitchen 
 	3. Contains some aspects of the 3D walk around for the home page
-	4. Includes keeping track of the score count 
+	4. Includes keeping track of the score count
+    
+Attributions:
+    Parts of code for tossing from SpeedTutor Tutorial 
