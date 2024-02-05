@@ -21,4 +21,10 @@ public class OvenController : Interactable
     {
         Debug.Log("this is" + gameObject.name);
     }
+
+
+    // private void StartTimer()
+    // {
+
+    // }
 }
