@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6632550930376213050
+--- !u!1 &7684977490293766335
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4528668205554577619}
-  - component: {fileID: 3588014257580665060}
-  - component: {fileID: 9147842984808981663}
-  - component: {fileID: 6506172862777996506}
-  - component: {fileID: 4498783488230234801}
-  - component: {fileID: 4004460158542142592}
-  m_Layer: 7
-  m_Name: Mushroom
-  m_TagString: Mushroom
+  - component: {fileID: 8919561703299711691}
+  - component: {fileID: 2527055753134416844}
+  - component: {fileID: 3704646321618361679}
+  - component: {fileID: 4505376031385004798}
+  - component: {fileID: 3833759077215843101}
+  - component: {fileID: 258567782878236753}
+  m_Layer: 9
+  m_Name: Pizza
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4528668205554577619
+--- !u!4 &8919561703299711691
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632550930376213050}
+  m_GameObject: {fileID: 7684977490293766335}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.136, y: -3.959, z: -3.322}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -44.2, y: 10.4, z: -60.9}
+  m_LocalScale: {x: 12.68, y: 0.35, z: 12.68}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3588014257580665060
+--- !u!33 &2527055753134416844
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632550930376213050}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9147842984808981663
+  m_GameObject: {fileID: 7684977490293766335}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3704646321618361679
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632550930376213050}
+  m_GameObject: {fileID: 7684977490293766335}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6506172862777996506
-SphereCollider:
+--- !u!65 &4505376031385004798
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632550930376213050}
+  m_GameObject: {fileID: 7684977490293766335}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,15 +105,15 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4498783488230234801
+  m_Size: {x: 0.7, y: 3.3095605, z: 0.7}
+  m_Center: {x: 0.000000075210906, y: -0.2282061, z: -0.000000075210906}
+--- !u!54 &3833759077215843101
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632550930376213050}
+  m_GameObject: {fileID: 7684977490293766335}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -133,20 +133,17 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &4004460158542142592
+  m_CollisionDetection: 1
+--- !u!114 &258567782878236753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632550930376213050}
+  m_GameObject: {fileID: 7684977490293766335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91976ab5fbfc411096bb9624f28b694, type: 3}
+  m_Script: {fileID: 11500000, guid: 654425fd0292749dd97068c087346811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Mushroom Time
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
+  pepperoniPizza: {fileID: 2100000, guid: 8f1683cfe24c642038e82ceed867ffb1, type: 2}

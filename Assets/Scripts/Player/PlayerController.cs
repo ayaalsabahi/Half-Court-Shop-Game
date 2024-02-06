@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
     public float jumpCooldown;
     bool readyToJump = true;
 
-
-
-
     //Orientation
     public Transform orientation;
     float horizontalInput;
@@ -71,7 +68,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
+        //scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
         cam = GetComponent<PlayerInteract>().cam;
     }
 
@@ -110,7 +107,7 @@ public class PlayerController : MonoBehaviour
             ReleaseBall();
         }
 
-        scoreText.text = "Score: " + score.ToString();
+        //scoreText.text = "Score: " + score.ToString();
     }
 
     void FixedUpdate()
@@ -132,13 +129,18 @@ public class PlayerController : MonoBehaviour
 
      private void MovePlayer()
     {
-        moveDirection = (orientation.forward * verticalInput) + (orientation.right * horizontalInput);
-        if(grounded)
+        Vector3 horizontalMovement = orientation.right * horizontalInput;
+        Vector3 verticalMovement = orientation.forward * verticalInput;
+
+        Vector3 movement = (horizontalMovement + verticalMovement).normalized;
+
+        if (grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(movement * moveSpeed * 10f, ForceMode.Force);
         }
-        else{
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        else
+        {
+            rb.AddForce(movement * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
     }
 

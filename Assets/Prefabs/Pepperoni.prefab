@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7068758507726377596}
   - component: {fileID: 4128358812816063256}
   - component: {fileID: 4018069137086834401}
-  - component: {fileID: 81762083769489641}
   - component: {fileID: 4081696331177087668}
   m_Layer: 7
   m_Name: Pepperoni
@@ -130,27 +129,6 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.7, y: 3, z: 0.7}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &81762083769489641
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4423570143370368594}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
