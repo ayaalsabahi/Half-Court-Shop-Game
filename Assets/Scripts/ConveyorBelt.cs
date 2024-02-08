@@ -35,7 +35,7 @@ public class ConveyorBelt : MonoBehaviour
         for (int i = 0; i <= onBelt.Count - 1; i++)
         {
             onBelt[i].GetComponent<Rigidbody>().AddForce(speed * direction);
-            Debug.Log(onBelt[i].GetComponent<Rigidbody>());
+            //Debug.Log(onBelt[i].GetComponent<Rigidbody>());
         }
     }
 
