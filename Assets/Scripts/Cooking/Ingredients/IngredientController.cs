@@ -32,5 +32,15 @@ public class IngredientController : Interactable
         else {
             // Debug.Log("Not in Layermask");
         }
+
+        // Debug.Log(other.gameObject.tag);
+        
+        if (other.gameObject.tag == "Pizza")
+        {
+            Debug.Log("on a pizza");
+            Debug.Log(this.tag);
+            other.gameObject.GetComponent<PizzaController>().findIngredientToIncrease(this.tag.ToString());
+            // Destroy(gameObject);
+        }
     }
 }

@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     //Points
     [SerializeField]
     public int score;
+    [SerializeField]
     TMP_Text scoreText; 
 
 
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
         }
         if(isCharging)
         {
-            Debug.Log("charge");
+            // Debug.Log("charge");
             ChargeThrow();
             // if(easyModeOn)
             // {
@@ -103,11 +104,15 @@ public class PlayerController : MonoBehaviour
         }
         if(inHand != "" && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            Debug.Log("throw");
+            // Debug.Log("throw");
             ReleaseBall();
         }
+        if(grounded)
+        {
+            Debug.Log("on the ground");
+        }
 
-        //scoreText.text = "Score: " + score.ToString();
+        // scoreText.text = "Score: " + score.ToString();
     }
 
     void FixedUpdate()
@@ -226,11 +231,11 @@ public class PlayerController : MonoBehaviour
     {
         for(int i = 0; i < throwableItems.Length; i++)
         {
-            Debug.Log("checking throw list for " + inHand);
+            // Debug.Log("checking throw list for " + inHand);
             
             if (throwableItems[i].tag == inHand)
             {
-                Debug.Log("found it "+ throwableItems[i].tag);
+                // Debug.Log("found it "+ throwableItems[i].tag);
                 thingToThrow = throwableItems[i];
             }
         }

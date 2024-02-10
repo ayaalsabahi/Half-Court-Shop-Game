@@ -20,5 +20,6 @@ public class TrayController : MonoBehaviour
             Debug.Log("points after " + playerController.score);
             
         }
+        Debug.Log(other.tag);
     }
 }

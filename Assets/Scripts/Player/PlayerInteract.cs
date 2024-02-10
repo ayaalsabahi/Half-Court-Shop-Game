@@ -33,7 +33,8 @@ public class PlayerInteract : MonoBehaviour
                 {
                     GameObject ingredient = hitInfo.collider.gameObject;
                     //interactable.BaseInteract();
-                    Debug.Log("pick up " + ingredient);
+                    // Debug.Log("pick up " + ingredient);
+                    // Debug.Log("and the the tag is " + ingredient.tag);
                     player.GetComponent<PlayerController>().inHand = interactable.tag;
                     Destroy(ingredient);
                 }
