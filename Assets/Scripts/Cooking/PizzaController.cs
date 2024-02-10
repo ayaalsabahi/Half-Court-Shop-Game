@@ -9,19 +9,21 @@ public class PizzaController : MonoBehaviour
     public Material pepperoniPizza;
     Renderer meshRenderer;
 
-    public Dictionary<string, int> ingredientsList = new Dictionary<string, int>();
+    public Dictionary<string, int> ingredientsDict = new Dictionary<string, int>();
+
+    public List<string> IngredientsList;
     // Start is called before the first frame update
     void Start()
     {
         meshRenderer = GetComponent<Renderer>();
-        ingredientsList.Add("Pepperoni", 0);
-        ingredientsList.Add("Mushroom", 0);
+        ingredientsDict.Add("Pepperoni", 0);
+        ingredientsDict.Add("Mushroom", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(ingredientsList["Pepperoni"] > 0 && ingredientsList["Mushroom"] > 0)
+        if(ingredientsDict["Pepperoni"] > 0 && ingredientsDict["Mushroom"] > 0)
         {
             Debug.Log("pizza done");
         }
@@ -34,22 +36,27 @@ public class PizzaController : MonoBehaviour
             // Debug.Log("making pepperoni");
             meshRenderer.material = pepperoniPizza;
         }
+
     }
 
     public void findIngredientToIncrease(string tag)
     {
         bool found = false;
 
-        foreach(string key in ingredientsList.Keys)
+        foreach(string key in ingredientsDict.Keys)
         {
             if(key == tag)
             {
                 found = true;
             } 
         }
-        if (found)
+        if(found)
         {
-            ingredientsList[tag] = ingredientsList[tag]+1;
+            ingredientsDict[tag] = ingredientsDict[tag]+1;
+            if(ingredientsDict[tag] == 1)
+            {
+                IngredientsList.Add(tag);
+            }
         }
         found = false;
     }

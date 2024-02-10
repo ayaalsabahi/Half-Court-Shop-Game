@@ -37,10 +37,10 @@ public class IngredientController : Interactable
         
         if (other.gameObject.tag == "Pizza")
         {
-            Debug.Log("on a pizza");
-            Debug.Log(this.tag);
+            // Debug.Log("on a pizza");
+            // Debug.Log(this.tag);
             other.gameObject.GetComponent<PizzaController>().findIngredientToIncrease(this.tag.ToString());
-            // Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

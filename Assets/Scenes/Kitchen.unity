@@ -900,6 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pepperoniPizza: {fileID: 2100000, guid: 8f1683cfe24c642038e82ceed867ffb1, type: 2}
+  IngredientsList: []
 --- !u!54 &644986331
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1238,6 +1239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pepperoniPizza: {fileID: 2100000, guid: 8f1683cfe24c642038e82ceed867ffb1, type: 2}
+  IngredientsList: []
 --- !u!65 &814533792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3357,10 +3359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3427,6 +3429,7 @@ MonoBehaviour:
   ticketPrefab: {fileID: 1329175767722533292, guid: eb5a21195ded64899b7cbdf7bf7ea78a, type: 3}
   maxToppings: 4
   numberOfTickets: 0
+  curTicketNum: 0
 --- !u!1 &1867415234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4047,6 +4050,8 @@ MonoBehaviour:
   conveyorSpeed: 0.1
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
+  ticketHolder: {fileID: 1813333008}
+  toRemove: 
 --- !u!65 &2130046464
 BoxCollider:
   m_ObjectHideFlags: 0
