@@ -21,7 +21,10 @@ public class PizzaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(ingredientsList["Pepperoni"] > 0 && ingredientsList["Mushroom"] > 0)
+        {
+            Debug.Log("pizza done");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
