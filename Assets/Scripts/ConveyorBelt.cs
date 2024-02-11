@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
 using System;
+using System.Linq;
 
 // CODE SOURCE: FROM Jayometric ON YOUTUBE
 // https://www.youtube.com/watch?v=cSEg7Xm4A9A&ab_channel=Jayometric
@@ -34,7 +35,11 @@ public class ConveyorBelt : MonoBehaviour
     private void Update()
     {
         tickets = ticketHolder.GetComponent<TicketHolder>().tickets;
-        CheckTickets();
+        //Debug.Log(onBelt.Count);
+        if(onBelt.Count > 0)
+        {
+            CheckTickets();
+        }
     }
 
     // Fixed update for physics
@@ -82,17 +87,32 @@ public class ConveyorBelt : MonoBehaviour
     {
          for(int j = 0; j < onBelt.Count; j++)
         {
-            // Debug.Log("pizza list is" + onBelt[j].GetComponent<PizzaController>().IngredientsList);
+            List<string> toCompare = onBelt[j].GetComponent<PizzaController>().IngredientsList;
             // Debug.Log(2);
-            // Debug.Log(String.Join("\n", onBelt[j].GetComponent<PizzaController>().IngredientsList)); 
-            if (tickets[key] == onBelt[j].GetComponent<PizzaController>().IngredientsList)
+            // Debug.Log(String.Join("\n", onBelt[j].GetComponent<PizzaController>().IngredientsList));
+            if(tickets[key].All(toCompare.Contains) && tickets[key].Count == toCompare.Count)
+            // if (tickets[key] == onBelt[j].GetComponent<PizzaController>().IngredientsList)
             //Ticket[i] matches pizza[j] on belt
             {
                 Debug.Log("key match");
-                ticketHolder.GetComponent<TicketHolder>().tickets.Remove(key);
-                //Delete ticket
 
-                Destroy(onBelt[j]);
+                ticketHolder.GetComponent<TicketHolder>().DeleteTicket(key);
+
+                // Debug.Log($"Attempting to remove ticket with key: {key}");
+                // Debug.Log($"Tickets before removal: {string.Join(", ", tickets.Keys)}");
+                // bool removed = ticketHolder.GetComponent<TicketHolder>().tickets.Remove(key);
+                // Debug.Log($"Removal successful: {removed}");
+                // Debug.Log($"Tickets after removal: {string.Join(", ", tickets.Keys)}");
+
+
+
+
+                // ticketHolder.GetComponent<TicketHolder>().tickets.Remove(key);
+                // //Delete ticket
+
+                GameObject toDestroy = onBelt[j];
+                onBelt.RemoveAt(j); // Remove the pizza from the list first
+                Destroy(toDestroy);
                 //Delete pizza
                 return true;
             }

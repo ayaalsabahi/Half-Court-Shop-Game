@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class TicketHolder : MonoBehaviour
 {
     public List<string> possibleIngredients;
     public Dictionary<int, List<string>> tickets = new Dictionary<int, List<string>>();
+    public Dictionary<int, GameObject> ticketGameObjects = new Dictionary<int, GameObject>();
 
     [SerializeField]
     public GameObject ticketPrefab;
@@ -28,7 +30,7 @@ public class TicketHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(numberOfTickets < 2)
+        if(tickets.Count < 2)
         {
             CreateTicket();
         }
@@ -47,31 +49,54 @@ public class TicketHolder : MonoBehaviour
     public List<string> GetRandomCombo()
     {
         List<string> ans = new List<string>();
-        ans.Add("Pepperoni");
-        return ans;
-        // int numToppings = Random.Range(1, maxToppings+1);
-        // //Get number of toppings for the ticket
-        // List<int> nums = new List<int>();
-        // while (nums.Count < numToppings)
-        // //Populate nums with unique indices corresponding to possible ingrdients
-        // //Populates nums to same size as numToppings
-        // {
-        //     int pos = Random.Range(0, possibleIngredients.Count);
-        //     if(!nums.Contains(pos))
-        //     {
-        //         nums.Add(pos);
-        //     }
-        // }
+        if(curTicketNum < 1)
+        {
+            ans.Add("Pepperoni");
+            return ans;
+        }
+        else{
+            int numToppings = Random.Range(1, maxToppings+1);
+            //Get number of toppings for the ticket
+            List<int> nums = new List<int>();
+            while (nums.Count < numToppings)
+            //Populate nums with unique indices corresponding to possible ingrdients
+            //Populates nums to same size as numToppings
+            {
+                int pos = Random.Range(0, possibleIngredients.Count);
+                if(!nums.Contains(pos))
+                {
+                    nums.Add(pos);
+                }
+            }
 
-        // for(int i = 0; i < nums.Count; i++)
-        // {
-        //     ans.Add(possibleIngredients[nums[i]]);
-        // }
-        // return ans;
+            for(int i = 0; i < nums.Count; i++)
+            {
+                ans.Add(possibleIngredients[nums[i]]);
+            }
+            return ans;
+        }
     }
 
     public void DeleteTicket(int index)
     {
-        Destroy(gameObject.transform.GetChild(index).gameObject);
+
+
+        Debug.Log($"Before deletion, tickets: {DictionaryToString(tickets)}");
+
+        // Attempt to delete the ticket
+        tickets.Remove(index);
+
+        // Log the dictionary contents after deletion
+        Debug.Log($"After deletion, tickets: {DictionaryToString(tickets)}");
+
+        Debug.Log("delet?");
+
+        // tickets.Remove(index);
+        // Debug.Log("delet?");
+    }
+
+    private string DictionaryToString(Dictionary<int, List<string>> dictionary)
+    {
+        return "{" + string.Join(", ", dictionary.Select(kv => kv.Key + "=" + "[" + string.Join(", ", kv.Value) + "]").ToArray()) + "}";
     }
 }
