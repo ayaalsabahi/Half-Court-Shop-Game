@@ -49,7 +49,7 @@ public class TicketHolder : MonoBehaviour
     public List<string> GetRandomCombo()
     {
         List<string> ans = new List<string>();
-        if (curTicketNum < 1)
+        if (curTicketNum < 2)
         {
             ans.Add("Pepperoni");
             return ans;
