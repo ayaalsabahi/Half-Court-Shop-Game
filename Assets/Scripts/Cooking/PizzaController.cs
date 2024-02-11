@@ -18,15 +18,17 @@ public class PizzaController : MonoBehaviour
         meshRenderer = GetComponent<Renderer>();
         ingredientsDict.Add("Pepperoni", 0);
         ingredientsDict.Add("Mushroom", 0);
+        ingredientsDict.Add("Olive", 0);
+        ingredientsDict.Add("Pineapple", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(ingredientsDict["Pepperoni"] > 0 && ingredientsDict["Mushroom"] > 0)
-        {
-            Debug.Log("pizza done");
-        }
+        // if(ingredientsDict["Pepperoni"] > 0 && ingredientsDict["Mushroom"] > 0)
+        // {
+        //     Debug.Log("pizza done");
+        // }
     }
 
     private void OnTriggerEnter(Collider other)

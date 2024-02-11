@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .2f, theGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .7f, theGround);
         MyInput();
         SpeedControl();
         
@@ -132,20 +132,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-     private void MovePlayer()
+    //  private void MovePlayer()
+    // {
+    //     Vector3 horizontalMovement = orientation.right * horizontalInput;
+    //     Vector3 verticalMovement = orientation.forward * verticalInput;
+
+    //     Vector3 movement = (horizontalMovement + verticalMovement).normalized;
+
+    //     if (grounded)
+    //     {
+    //         rb.AddForce(movement * moveSpeed * 10f, ForceMode.Force);
+    //     }
+    //     else
+    //     {
+    //         rb.AddForce(movement * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+    //     }
+    // }
+
+    private void MovePlayer()
     {
-        Vector3 horizontalMovement = orientation.right * horizontalInput;
-        Vector3 verticalMovement = orientation.forward * verticalInput;
-
-        Vector3 movement = (horizontalMovement + verticalMovement).normalized;
-
+        moveDirection = orientation.right * horizontalInput + orientation.forward * verticalInput;
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         if (grounded)
         {
-            rb.AddForce(movement * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         }
         else
         {
-            rb.AddForce(movement * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
     }
 
@@ -217,7 +231,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShowTrajectory(Vector3 origin, Vector3 velocity)
     {
-        Vector3[] points = new Vector3[500];
+        Vector3[] points = new Vector3[1000];
         trajectoryLine.positionCount = points.Length;
         for(int i = 0; i < points.Length; i++)
         {

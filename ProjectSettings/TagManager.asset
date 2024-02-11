@@ -9,6 +9,8 @@ TagManager:
   - Pizza
   - Mushroom
   - startButton
+  - Pineapple
+  - Olive
   layers:
   - Default
   - TransparentFX
