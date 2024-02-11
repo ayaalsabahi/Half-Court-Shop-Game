@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .2f, theGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .7f, theGround);
         MyInput();
         SpeedControl();
         
