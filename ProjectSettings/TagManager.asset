@@ -10,6 +10,7 @@ TagManager:
   - Mushroom
   - startButton
   - Pineapple
+  - Olive
   layers:
   - Default
   - TransparentFX
