@@ -3467,7 +3467,7 @@ Transform:
   m_GameObject: {fileID: 1927430684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.118, y: -2.735236, z: -4.465}
+  m_LocalPosition: {x: -7.753, y: -3.69, z: -4.36}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3486,7 +3486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaPrefab: {fileID: 6199589364946903190, guid: 968c68afb20f84c86be4a641412bc55b, type: 3}
-  spawnInterval: 2
+  spawnInterval: 7
 --- !u!1 &1942290231
 GameObject:
   m_ObjectHideFlags: 0
