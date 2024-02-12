@@ -7,6 +7,6 @@ public class creditsButton : MonoBehaviour
 {
     private void OnMouseUpAsButton()
     {
-        SceneManager.LoadScene("credits");
+        SceneManager.LoadScene("Credits");
     }
 }
