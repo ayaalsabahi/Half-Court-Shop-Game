@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: af109d4eb73874599968b9632359606b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,3 +170,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pepperoniPizza: {fileID: 2100000, guid: 8f1683cfe24c642038e82ceed867ffb1, type: 2}
   IngredientsList: []
+  pointsToAdd: 0
