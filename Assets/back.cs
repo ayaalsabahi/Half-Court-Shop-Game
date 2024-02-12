@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class back : MonoBehaviour
 {
-    public void returnToHome()
+    void Update()
     {
-        SceneManager.LoadScene("homePage");
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneManager.LoadScene("homePage");
+        }
     }
 }
