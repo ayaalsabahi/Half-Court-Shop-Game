@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
 
     public GameState currentState;
 
-    public GameObject pizzaPrefab;
+    public PlayerController playerScript;
 
 
     //winner starts at being still playing
@@ -36,24 +36,27 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameController.S.currentState = GameState.Menu;
+        GameController.S.currentState = GameState.InKitchen;
         DontDestroyOnLoad(this);
     }
 
-    public void SpawnOrder()
+    private void CheckForWin()
     {
-        GenerateNewOrder();
-        CreatePizza();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if (playerScript.score < 10)
+        {
+            currentState = GameState.InKitchen;
+        }
+        else
+        {
+            currentState = GameState.GameOver;
+            EndGame();
+        }
     }
 
-    private void CreatePizza()
+    public void EndGame()
     {
-        Instantiate(pizzaPrefab);
-    }
-
-    private void GenerateNewOrder()
-    {
-
+        // you win!
     }
 
     public void GoToKitchen()
