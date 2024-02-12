@@ -12,6 +12,8 @@ public class PizzaController : MonoBehaviour
     public Dictionary<string, int> ingredientsDict = new Dictionary<string, int>();
 
     public List<string> IngredientsList;
+
+    public int pointsToAdd;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,11 @@ public class PizzaController : MonoBehaviour
         {
             // Debug.Log("making pepperoni");
             meshRenderer.material = pepperoniPizza;
+        }
+
+        if (other.GetComponent<IngredientController>() != null)
+        {
+            pointsToAdd+=1;
         }
 
     }

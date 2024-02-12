@@ -111,6 +111,7 @@ public class ConveyorBelt : MonoBehaviour
                 // //Delete ticket
 
                 GameObject toDestroy = onBelt[j];
+                GameObject.Find("Player").GetComponent<PlayerController>().score += onBelt[j].GetComponent<PizzaController>().pointsToAdd;
                 onBelt.RemoveAt(j); // Remove the pizza from the list first
                 Destroy(toDestroy);
                 //Delete pizza

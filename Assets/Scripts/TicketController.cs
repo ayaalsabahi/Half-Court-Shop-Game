@@ -10,7 +10,7 @@ public class TicketController : MonoBehaviour
     [SerializeField]
     public TMP_Text ingredientsText;
 
-    int pointsToEarn;
+    public int pointsToEarn;
 
     // Start is called before the first frame update
     void Start()

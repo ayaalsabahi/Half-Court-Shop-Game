@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        //scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
+        scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
         cam = GetComponent<PlayerInteract>().cam;
     }
 
@@ -107,12 +107,8 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("throw");
             ReleaseBall();
         }
-        if(grounded)
-        {
-            Debug.Log("on the ground");
-        }
 
-        // scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
 
     void FixedUpdate()
@@ -231,7 +227,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShowTrajectory(Vector3 origin, Vector3 velocity)
     {
-        Vector3[] points = new Vector3[1000];
+        Vector3[] points = new Vector3[2000];
         trajectoryLine.positionCount = points.Length;
         for(int i = 0; i < points.Length; i++)
         {
