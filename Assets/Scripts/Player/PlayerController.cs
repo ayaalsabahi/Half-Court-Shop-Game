@@ -225,24 +225,26 @@ public class PlayerController : MonoBehaviour
     private void ThrowObj(float force)
     {
         Vector3 spawnPoint = throwPosition.position + cam.transform.forward;
+        GameObject tossable = Instantiate(thingToThrow, spawnPoint, Quaternion.identity); // Use Quaternion.identity for default rotation
 
-        GameObject tossable = Instantiate(thingToThrow, spawnPoint, cam.transform.rotation);
-        // Debug.Log(tossable);
-        Rigidbody itembody = tossable.GetComponent<Rigidbody>();
-        Vector3 finalThrowDirection = (cam.transform.forward  + throwDirection).normalized;
-        
-        itembody.AddForce(finalThrowDirection * force, ForceMode.VelocityChange);
+        Rigidbody itemRb = tossable.GetComponent<Rigidbody>();
+        Vector3 finalThrowDirection = (cam.transform.forward + throwDirection).normalized;
 
+        // Calculate initial velocity based on force and mass, assuming ForceMode.VelocityChange
+        Vector3 initialVelocity = finalThrowDirection * force / itemRb.mass;
+
+        itemRb.AddForce(initialVelocity, ForceMode.VelocityChange); // Apply initial velocity as force
     }
 
-    private void ShowTrajectory(Vector3 origin, Vector3 velocity)
+    private void ShowTrajectory(Vector3 origin, Vector3 initialVelocity)
     {
-        Vector3[] points = new Vector3[5000];
+        Vector3[] points = new Vector3[500]; // Reduced the number of points for performance
         trajectoryLine.positionCount = points.Length;
-        for(int i = 0; i < points.Length; i++)
+        for (int i = 0; i < points.Length; i++)
         {
-            float time = i * 0.1f;
-            points[i] = origin + velocity * time + .05f * Physics.gravity * time * time;
+            float time = i * 0.02f; // Reduced time step for a smoother curve
+            Vector3 point = origin + initialVelocity * time + 0.5f * Physics.gravity * time * time;
+            points[i] = point;
         }
         trajectoryLine.SetPositions(points);
     }
