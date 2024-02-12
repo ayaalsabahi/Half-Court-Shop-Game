@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class tutorialScript : MonoBehaviour
 {
-    private void OnMouseUpAsButton()
+    public void OnMouseUpAsButton()
     {
         SceneManager.LoadScene("Tutorial");
     }
