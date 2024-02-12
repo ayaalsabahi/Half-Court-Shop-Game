@@ -1,16 +1,15 @@
 # Half Court Shop
 
-	"Pizza Basketball": How fast can you really make pizza & do you have the skills to throw them all accuratly enough? Test 
-your skills here!
+"Pizza Basketball": How fast can you really make pizza & do you have the skills to throw them all accuratly enough? Test your skills here!
 
-	Half Court Shop is a first-person pizza-ingredient-throwing fresh take on basketball made in Unity. Play ball and toss your ingredients as accurately as you can onto the pizzas before the doughs can go to waste. Too many strikes, and you lose!
+Half Court Shop is a first-person pizza-ingredient-throwing fresh take on basketball made in Unity. Play ball and toss your ingredients as accurately as you can onto the pizzas before the doughs can go to waste. Too many strikes, and you lose!
 
 RUN DIRECTIONS: 
 	MAC: Run the provided execuatble, if you face security issues of nontrusted downloadable (we do not have any malware 
 there we promise), right click the file and press "Open" through that.
 	WINDOWS: tentativley not there yet. sorry.
 
- 	Use WASD to move, E to collect ingredients, mouse to aim, and left click to wind up.
+Use WASD to move, E to collect ingredients, mouse to aim, and left click to wind up.
 
 RELEASE NOTES: 
 	Version 1, prelimnary build: 
