@@ -60,6 +60,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     TMP_Text scoreText; 
 
+    [SerializeField]
+    public int strikes;
+
+    [SerializeField]
+    TMP_Text strikeText;
+    
+    
+
 
 
 
@@ -70,6 +78,7 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
 
         scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
+        strikeText = GameObject.Find("Canvas").transform.GetChild(2).GetComponent<TMP_Text>();
         cam = GetComponent<PlayerInteract>().cam;
     }
 
@@ -109,6 +118,7 @@ public class PlayerController : MonoBehaviour
         }
 
         scoreText.text = "Score: " + score.ToString();
+        strikeText.text = "Strikes: " + strikes.ToString();
     }
 
     void FixedUpdate()
@@ -227,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShowTrajectory(Vector3 origin, Vector3 velocity)
     {
-        Vector3[] points = new Vector3[2000];
+        Vector3[] points = new Vector3[5000];
         trajectoryLine.positionCount = points.Length;
         for(int i = 0; i < points.Length; i++)
         {
