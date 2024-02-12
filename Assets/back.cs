@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class creditsButton : MonoBehaviour
+public class back : MonoBehaviour
 {
-    private void OnMouseUpAsButton()
+    public void returnToHome()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("homePage");
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class creditsButton : MonoBehaviour
+public class tutorialScript : MonoBehaviour
 {
     private void OnMouseUpAsButton()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("Tutorial");
     }
 }
