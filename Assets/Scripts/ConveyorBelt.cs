@@ -26,9 +26,12 @@ public class ConveyorBelt : MonoBehaviour
 
     public List<int> toRemove;
 
+    private Vector3 MAX_FORCE;
+
     // Start is called before the first frame update
     void Start()
     {
+        MAX_FORCE = new Vector3(10.0f, 10.0f, 10.0f);
     }
 
     // Update is called once per frame
@@ -48,7 +51,9 @@ public class ConveyorBelt : MonoBehaviour
         // For every item on the belt, add force to it in the direction given
         for (int i = 0; i <= onBelt.Count - 1; i++)
         {
-            onBelt[i].GetComponent<Rigidbody>().AddForce(speed * direction);
+            Debug.Log(onBelt[i].GetComponent<Rigidbody>().GetAccumulatedForce().z + "VS" + MAX_FORCE.z);
+            if (onBelt[i].GetComponent<Rigidbody>().GetAccumulatedForce().z <= MAX_FORCE.z)
+                onBelt[i].GetComponent<Rigidbody>().AddForce(speed * direction, ForceMode.Impulse);
             //Debug.Log(onBelt[i].GetComponent<Rigidbody>());
         }
     }
