@@ -5,28 +5,36 @@ using UnityEngine;
 public class IngredientSpawner : MonoBehaviour
 {
     [SerializeField]
-    public GameObject ingredient;
+    private GameObject ingredient;
 
     [SerializeField]
-    public int maxIngredients = 5;
+    private int maxIngredients = 5;
 
     [SerializeField]
-    public string ingredientTag;
+    private string ingredientTag;
 
     private List<GameObject> currentIngredients = new List<GameObject>();
 
     private void Update()
     {
-        // Check if we need to spawn new pepperonis
+        // Clean up any null references in the list (for objects that have been deleted)
+        CleanupIngredientsList();
+
+        // Check if we need to spawn new ingredients
         if (currentIngredients.Count < maxIngredients)
         {
-            SpawnPepperoni();
+            SpawnIngredient();
+        }
+
+        // Logging the count for debugging purposes
+        if (ingredientTag == "Pepperoni")
+        {
+            Debug.Log(currentIngredients.Count);
         }
     }
 
-    private void SpawnPepperoni()
+    private void SpawnIngredient()
     {
-        // Instantiate a new pepperoni inside the bounds of the collider
         Vector3 spawnPosition = GetRandomPositionInSpawner();
         GameObject newIngredient = Instantiate(ingredient, spawnPosition, Quaternion.identity, transform);
         newIngredient.layer = LayerMask.NameToLayer("Interactable");
@@ -52,11 +60,17 @@ public class IngredientSpawner : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    // No need for OnTriggerExit as we handle deletion cleanup in CleanupIngredientsList()
+
+    // Cleanup null references in the currentIngredients list
+    private void CleanupIngredientsList()
     {
-        if (other.gameObject.CompareTag(ingredientTag))
+        for (int i = currentIngredients.Count - 1; i >= 0; i--)
         {
-            currentIngredients.Remove(other.gameObject);
+            if (currentIngredients[i] == null)
+            {
+                currentIngredients.RemoveAt(i);
+            }
         }
     }
 }
