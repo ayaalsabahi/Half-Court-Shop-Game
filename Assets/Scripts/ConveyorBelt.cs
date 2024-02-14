@@ -51,7 +51,7 @@ public class ConveyorBelt : MonoBehaviour
         // For every item on the belt, add force to it in the direction given
         for (int i = 0; i <= onBelt.Count - 1; i++)
         {
-            Debug.Log(onBelt[i].GetComponent<Rigidbody>().GetAccumulatedForce().z + "VS" + MAX_FORCE.z);
+            //Debug.Log(onBelt[i].GetComponent<Rigidbody>().GetAccumulatedForce().z + "VS" + MAX_FORCE.z);
             if (onBelt[i].GetComponent<Rigidbody>().GetAccumulatedForce().z <= MAX_FORCE.z)
                 onBelt[i].GetComponent<Rigidbody>().AddForce(speed * direction, ForceMode.Impulse);
             //Debug.Log(onBelt[i].GetComponent<Rigidbody>());
@@ -116,7 +116,9 @@ public class ConveyorBelt : MonoBehaviour
                 // //Delete ticket
 
                 GameObject toDestroy = onBelt[j];
-                GameObject.Find("Player").GetComponent<PlayerController>().score += onBelt[j].GetComponent<PizzaController>().pointsToAdd;
+                PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+                playerController.score += onBelt[j].GetComponent<PizzaController>().pointsToAdd;
+                playerController.IncrementPizzaBox();
                 onBelt.RemoveAt(j); // Remove the pizza from the list first
                 Destroy(toDestroy);
                 //Delete pizza

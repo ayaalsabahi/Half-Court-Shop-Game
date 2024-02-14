@@ -11,6 +11,7 @@ TagManager:
   - startButton
   - Pineapple
   - Olive
+  - PizzaBoxSpawner
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Interactable
   - Conveyor
   - Pizza
-  - 
+  - Shelf
   - 
   - 
   - 

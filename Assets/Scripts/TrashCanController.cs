@@ -19,7 +19,7 @@ public class TrashCanController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Pizza")
         {
-            GameObject.Find("Player").GetComponent<PlayerController>().strikes += 1;
+            GameObject.Find("Player").GetComponent<PlayerController>().IncrementStrikes();
             Destroy(collision.gameObject);
         }
     }

@@ -262,4 +262,15 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void IncrementPizzaBox()
+    {
+        Debug.Log("pizza should spawn");
+        GameObject.FindGameObjectWithTag("PizzaBoxSpawner").GetComponent<PizzaBoxSpawnScript>().SpawnPizzaBox();
+    }
+
+    public void IncrementStrikes()
+    {
+        strikes += 1;
+    }
 }
