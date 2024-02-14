@@ -96,24 +96,12 @@ public class ConveyorBelt : MonoBehaviour
             // Debug.Log(2);
             // Debug.Log(String.Join("\n", onBelt[j].GetComponent<PizzaController>().IngredientsList));
             if(tickets[key].All(toCompare.Contains) && tickets[key].Count == toCompare.Count)
-            // if (tickets[key] == onBelt[j].GetComponent<PizzaController>().IngredientsList)
             //Ticket[i] matches pizza[j] on belt
             {
                 Debug.Log("key match");
 
                 ticketHolder.GetComponent<TicketHolder>().DeleteTicket(key);
-
-                // Debug.Log($"Attempting to remove ticket with key: {key}");
-                // Debug.Log($"Tickets before removal: {string.Join(", ", tickets.Keys)}");
-                // bool removed = ticketHolder.GetComponent<TicketHolder>().tickets.Remove(key);
-                // Debug.Log($"Removal successful: {removed}");
-                // Debug.Log($"Tickets after removal: {string.Join(", ", tickets.Keys)}");
-
-
-
-
-                // ticketHolder.GetComponent<TicketHolder>().tickets.Remove(key);
-                // //Delete ticket
+                //Delete ticket
 
                 GameObject toDestroy = onBelt[j];
                 PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();

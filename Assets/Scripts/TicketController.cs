@@ -34,3 +34,4 @@ public class TicketController : MonoBehaviour
         return ans;
     }
 }
+//ans += "<color=green>" + ingredients[i] + "</color>" + "\n";
