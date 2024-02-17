@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
     private LineRenderer trajectoryLine;
     Camera cam;
 
+    [SerializeField]
+    GameObject trajectoryEnd;
+
+
     //Points
     [SerializeField]
     public int score;
@@ -65,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     TMP_Text strikeText;
+
+    
     
     
 
@@ -80,6 +86,7 @@ public class PlayerController : MonoBehaviour
         scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
         strikeText = GameObject.Find("Canvas").transform.GetChild(2).GetComponent<TMP_Text>();
         cam = GetComponent<PlayerInteract>().cam;
+        trajectoryEnd.SetActive(false);
     }
 
     void Update()
@@ -104,12 +111,8 @@ public class PlayerController : MonoBehaviour
         }
         if(isCharging)
         {
-            // Debug.Log("charge");
+            trajectoryEnd.SetActive(true);
             ChargeThrow();
-            // if(easyModeOn)
-            // {
-            //     Vector3 ingredientVelocity = ();
-            // }
         }
         if(inHand != "" && Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -137,23 +140,6 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
-
-    //  private void MovePlayer()
-    // {
-    //     Vector3 horizontalMovement = orientation.right * horizontalInput;
-    //     Vector3 verticalMovement = orientation.forward * verticalInput;
-
-    //     Vector3 movement = (horizontalMovement + verticalMovement).normalized;
-
-    //     if (grounded)
-    //     {
-    //         rb.AddForce(movement * moveSpeed * 10f, ForceMode.Force);
-    //     }
-    //     else
-    //     {
-    //         rb.AddForce(movement * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-    //     }
-    // }
 
     private void MovePlayer()
     {
@@ -213,10 +199,11 @@ public class PlayerController : MonoBehaviour
 
     private void ReleaseBall()
     {
+        trajectoryEnd.SetActive(false);
         ThrowObj(Mathf.Min(chargeTime * throwForce, maxForce));
         isCharging = false;
         inHand = "";
-         if(easyModeOn)
+        if(easyModeOn)
         {
             trajectoryLine.enabled = false;
         }
@@ -238,15 +225,46 @@ public class PlayerController : MonoBehaviour
 
     private void ShowTrajectory(Vector3 origin, Vector3 initialVelocity)
     {
-        Vector3[] points = new Vector3[500]; // Reduced the number of points for performance
+        Vector3[] points = new Vector3[500]; // Adjust the number of points as needed
         trajectoryLine.positionCount = points.Length;
+        bool specialTargetHit = false; // Flag for hitting a special target
+
         for (int i = 0; i < points.Length; i++)
         {
-            float time = i * 0.02f; // Reduced time step for a smoother curve
+            float time = i * 0.02f; // Time step for each point
             Vector3 point = origin + initialVelocity * time + 0.5f * Physics.gravity * time * time;
             points[i] = point;
+
+            if (!specialTargetHit) // Perform raycasts only if a special target hasn't been hit yet
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(point, Vector3.down, out hit, Mathf.Infinity))
+                {
+                    // Update the hit marker's position to the hit point
+                    trajectoryEnd.transform.position = hit.point;
+                    trajectoryEnd.SetActive(true); // Ensure the hit marker is visible
+
+                    if (hit.collider.CompareTag("Pizza") || hit.collider.gameObject.layer == LayerMask.NameToLayer("Conveyor"))
+                    {
+                        specialTargetHit = true; // Mark that a special target has been hit
+                    }
+                }
+            }
         }
-        trajectoryLine.SetPositions(points);
+
+        trajectoryLine.SetPositions(points); // Update the trajectory line with the calculated points
+
+        // Change the color of the trajectory line and hit marker if a special target is hit
+        if (specialTargetHit)
+        {
+            trajectoryLine.material.color = Color.green;
+            trajectoryEnd.GetComponent<Renderer>().material.color = Color.green;
+        }
+        else
+        {
+            trajectoryLine.material.color = Color.white; // Default color for the trajectory line
+            trajectoryEnd.GetComponent<Renderer>().material.color = Color.white; // Default color for the hit marker
+        }
     }
 
     private void FindThingToThrow()
