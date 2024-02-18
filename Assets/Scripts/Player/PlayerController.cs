@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {    
@@ -223,50 +224,49 @@ public class PlayerController : MonoBehaviour
         itemRb.AddForce(initialVelocity, ForceMode.VelocityChange); // Apply initial velocity as force
     }
 
-    private void ShowTrajectory(Vector3 origin, Vector3 initialVelocity)
+    void ShowTrajectory(Vector3 origin, Vector3 initialVelocity)
     {
-        Vector3[] points = new Vector3[500]; // Adjust the number of points as needed
+        Vector3[] points = new Vector3[100]; // Adjust the number of points as needed
         trajectoryLine.positionCount = points.Length;
-        bool specialTargetHit = false; // Flag for hitting a special target
+        bool targetHit = false; // To track if we've hit a target object
 
         for (int i = 0; i < points.Length; i++)
         {
-            float time = i * 0.02f; // Time step for each point
+            float time = i * 0.1f; // Time step for each point (adjust as needed)
             Vector3 point = origin + initialVelocity * time + 0.5f * Physics.gravity * time * time;
             points[i] = point;
 
-            if (!specialTargetHit) // Perform raycasts only if a special target hasn't been hit yet
+            if (!targetHit) // Perform raycast only if we haven't hit a target yet
             {
                 RaycastHit hit;
-                if (Physics.Raycast(point, Vector3.down, out hit, Mathf.Infinity))
+                if (Physics.Raycast(point, Vector3.down, out hit, 1f)) // Adjust raycast length as needed
                 {
-                    // Update the hit marker's position to the hit point
+                    // Update hit marker position and visibility
                     trajectoryEnd.transform.position = hit.point;
-                    trajectoryEnd.SetActive(true); // Ensure the hit marker is visible
+                    trajectoryEnd.SetActive(true);
 
+                    // Check for specific tag or layer
                     if (hit.collider.CompareTag("Pizza") || hit.collider.gameObject.layer == LayerMask.NameToLayer("Conveyor"))
                     {
-                        specialTargetHit = true; // Mark that a special target has been hit
+                        targetHit = true; // Mark that we've hit a target
+                        trajectoryLine.material.color = Color.green; // Change line color to green
+                        trajectoryEnd.GetComponent<Renderer>().material.color = Color.green; // Change hit marker color to green
                     }
                 }
             }
+
         }
 
-        trajectoryLine.SetPositions(points); // Update the trajectory line with the calculated points
+        if (!targetHit) // If no target was hit, reset colors to default
+        {
+            trajectoryLine.material.color = Color.white; // Default color
+            trajectoryEnd.GetComponent<Renderer>().material.color = Color.white; // Default color
+        }
 
-        // Change the color of the trajectory line and hit marker if a special target is hit
-        if (specialTargetHit)
-        {
-            trajectoryLine.material.color = Color.green;
-            trajectoryEnd.GetComponent<Renderer>().material.color = Color.green;
-        }
-        else
-        {
-            trajectoryLine.material.color = Color.white; // Default color for the trajectory line
-            trajectoryEnd.GetComponent<Renderer>().material.color = Color.white; // Default color for the hit marker
-        }
+        trajectoryLine.SetPositions(points); // Update the trajectory line with calculated points
     }
-
+   
+    
     private void FindThingToThrow()
     {
         for(int i = 0; i < throwableItems.Length; i++)
