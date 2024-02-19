@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6172615371895695011}
   - component: {fileID: 1977128225319321037}
   - component: {fileID: 5443448322853641893}
+  - component: {fileID: 2155844767150749276}
+  - component: {fileID: 2522401888110098762}
   m_Layer: 7
   m_Name: NewOliveSlice
   m_TagString: Olive
@@ -49,7 +51,7 @@ MonoBehaviour:
   promptMessage: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
 --- !u!33 &5443448322853641893
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -58,6 +60,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3405998237480849775}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &2155844767150749276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405998237480849775}
+  m_Material: {fileID: 13400000, guid: 34dac1fe6187044b58317a6c51be9c15, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.039360214, y: 0.15845771, z: 0.15921947}
+  m_Center: {x: 0.011669636, y: 0.051840667, z: 0.037491694}
+--- !u!54 &2522401888110098762
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405998237480849775}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5834908503021610652
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,8 +119,6 @@ GameObject:
   - component: {fileID: 8193531282474352292}
   - component: {fileID: 6132476304543765516}
   - component: {fileID: 8543429552707748225}
-  - component: {fileID: 5068081087975700631}
-  - component: {fileID: 4148375839146448674}
   m_Layer: 7
   m_Name: Slice Olive
   m_TagString: Untagged
@@ -87,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 5834908503021610652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0, z: 0}
+  m_LocalPosition: {x: 0.01, y: -1.883, z: -0.21}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -143,51 +191,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5068081087975700631
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834908503021610652}
-  m_Material: {fileID: 13400000, guid: 34dac1fe6187044b58317a6c51be9c15, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0011083902, y: 0.0018001186, z: 0.001866219}
-  m_Center: {x: 0.000011226721, y: 0.019266259, z: 0.0024847463}
---- !u!54 &4148375839146448674
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834908503021610652}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
