@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class musicController : MonoBehaviour
 {
@@ -30,6 +31,16 @@ public class musicController : MonoBehaviour
         musicSource.loop = true; 
         musicSource.Play();
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName.Equals("Kitchen"))
+        {
+            musicSource.volume = 0.25f;
+        }
     }
 
 }

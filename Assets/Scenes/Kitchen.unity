@@ -3420,6 +3420,9 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   strikes: 0
   strikeText: {fileID: 0}
+  booClip: {fileID: 8300000, guid: a6c3d08b89dbf4195a4cfd2ad9822ffd, type: 3}
+  wooshClip: {fileID: 8300000, guid: 0bd006a501e2748fb814d86cf40d83cc, type: 3}
+  yayClip: {fileID: 8300000, guid: 0a9ac51d3dd0342d1b7f522d301c4123, type: 3}
 --- !u!114 &513708278
 MonoBehaviour:
   m_ObjectHideFlags: 0
