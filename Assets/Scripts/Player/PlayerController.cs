@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     //Timer
-    private float MAX_TIME = 12;
+    private float MAX_TIME = 60;
     private float timeElapsed;
     public TMP_Text timerText;
 
