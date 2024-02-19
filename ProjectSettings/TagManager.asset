@@ -15,6 +15,7 @@ TagManager:
   - MessageText
   - TutorialBanner
   - TicketCanvas
+  - ScoreManager
   layers:
   - Default
   - TransparentFX

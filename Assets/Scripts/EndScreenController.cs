@@ -17,6 +17,7 @@ public class EndScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
         score.text = scoreManager.GetComponent<ScoreManager>().score.ToString();
         strikes.text = scoreManager.GetComponent<ScoreManager>().strikes.ToString();
     }
