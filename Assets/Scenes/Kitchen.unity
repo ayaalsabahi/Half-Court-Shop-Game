@@ -746,7 +746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &83894911
 Transform:
   m_ObjectHideFlags: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11f799ae74c848d2adf4b160bd90d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredient: {fileID: 6632550930376213050, guid: 3bf0d85856e754a05b99c89e217bedc9, type: 3}
+  ingredient: {fileID: 9121069524168509569, guid: a447fb8b752c74e7c93a53f13cd25cb0, type: 3}
   maxIngredients: 8
   ingredientTag: Mushroom
 --- !u!1001 &112855056
@@ -3881,6 +3881,9 @@ MonoBehaviour:
   scoreText: {fileID: 936370339}
   strikes: 0
   strikeText: {fileID: 245640951}
+  booClip: {fileID: 0}
+  wooshClip: {fileID: 0}
+  yayClip: {fileID: 0}
 --- !u!114 &513708278
 MonoBehaviour:
   m_ObjectHideFlags: 0
