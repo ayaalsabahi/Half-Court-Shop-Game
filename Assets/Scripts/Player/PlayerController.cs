@@ -85,6 +85,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip yayClip;
 
 
+    //Hand texts
+    //[SerializeField]
+    
 
 
 
