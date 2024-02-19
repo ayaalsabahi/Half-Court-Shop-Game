@@ -4,7 +4,7 @@ using System.Collections;
 public class PizzaSpawner : MonoBehaviour
 {
     public GameObject pizzaPrefab; // Assign this in the inspector with your pizza prefab
-    public float spawnInterval = 2.0f; // Time between each spawn
+    public float spawnInterval = 1.0f; // Time between each spawn
 
     // Start is called before the first frame update
     void Start()
