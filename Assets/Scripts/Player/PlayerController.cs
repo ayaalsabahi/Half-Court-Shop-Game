@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
     Rigidbody rb;
 
+    //Timer
+    private float MAX_TIME = 60;
+    private float timeElapsed;
+    public TMP_Text timerText;
 
     //Holding and Throwing
     public string inHand = "";
@@ -86,8 +90,11 @@ public class PlayerController : MonoBehaviour
 
         scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
         strikeText = GameObject.Find("Canvas").transform.GetChild(2).GetComponent<TMP_Text>();
+        timerText.text = "Fortnite";
         cam = GetComponent<PlayerInteract>().cam;
         trajectoryEnd.SetActive(false);
+
+        timeElapsed = 0.0f;
     }
 
     void Update()
@@ -112,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
         if(isCharging)
         {
-            trajectoryEnd.SetActive(true);
+            // trajectoryEnd.SetActive(true);
             ChargeThrow();
         }
         if(inHand != "" && Input.GetKeyUp(KeyCode.Mouse0))
@@ -121,8 +128,17 @@ public class PlayerController : MonoBehaviour
             ReleaseBall();
         }
 
-        scoreText.text = "Score: " + score.ToString();
-        strikeText.text = "Strikes: " + strikes.ToString();
+        timeElapsed += Time.deltaTime;
+        if ( (MAX_TIME - timeElapsed) > 0)
+        {
+            UpdateUI();
+        }
+        else
+        {
+            // end game
+            GameController.S.EndGame();
+        }
+
     }
 
     void FixedUpdate()
@@ -243,7 +259,7 @@ public class PlayerController : MonoBehaviour
                 {
                     // Update hit marker position and visibility
                     trajectoryEnd.transform.position = hit.point;
-                    trajectoryEnd.SetActive(true);
+                    // trajectoryEnd.SetActive(true);
 
                     // Check for specific tag or layer
                     if (hit.collider.CompareTag("Pizza") || hit.collider.gameObject.layer == LayerMask.NameToLayer("Conveyor"))
@@ -290,5 +306,12 @@ public class PlayerController : MonoBehaviour
     public void IncrementStrikes()
     {
         strikes += 1;
+    }
+
+    private void UpdateUI()
+    {
+        timerText.text = Mathf.RoundToInt(MAX_TIME-timeElapsed).ToString();
+        scoreText.text = "Score: " + score.ToString();
+        strikeText.text = "Strikes: " + strikes.ToString();
     }
 }
