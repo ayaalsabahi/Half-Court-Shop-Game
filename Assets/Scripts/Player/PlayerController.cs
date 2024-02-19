@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
         if(isCharging)
         {
-            trajectoryEnd.SetActive(true);
+            // trajectoryEnd.SetActive(true);
             ChargeThrow();
         }
         if(inHand != "" && Input.GetKeyUp(KeyCode.Mouse0))
@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
                 {
                     // Update hit marker position and visibility
                     trajectoryEnd.transform.position = hit.point;
-                    trajectoryEnd.SetActive(true);
+                    // trajectoryEnd.SetActive(true);
 
                     // Check for specific tag or layer
                     if (hit.collider.CompareTag("Pizza") || hit.collider.gameObject.layer == LayerMask.NameToLayer("Conveyor"))
