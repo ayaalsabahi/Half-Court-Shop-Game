@@ -7,7 +7,7 @@ Half Court Shop is a first-person pizza-ingredient-throwing fresh take on basket
 ## RUN DIRECTIONS: 
 	MAC: Run the provided execuatble, if you face security issues of nontrusted downloadable (we do not have any malware there we promise), right click the file and press "Open" through that.
 	WINDOWS: tentativley not there yet. sorry.
-Use WASD to move, E to collect ingredients, mouse to aim, and left click to wind up.
+Use WASD to move, E to collect ingredients or right click, mouse to aim, and left click to wind up.
 
 ## RELEASE NOTES: 
 	Version 1, prelimnary build: 
@@ -15,6 +15,13 @@ Use WASD to move, E to collect ingredients, mouse to aim, and left click to wind
 	2. Contains some grey boxing for the kitchen 
 	3. Contains some aspects of the 3D walk around for the home page
 	4. Includes keeping track of the score count
+
+ 	verion 2, secondary build:
+  	1. Has improved visuals for the home screen with more assets & lighting 
+   	2. Kitchen has baked lighting, swapped grey boxed assets for artist assets 
+    	3. Included a timer as well as an end scene
+     	4. Added sound effects such as trash, woosh, and pizza complete 
+      	5. Added end/win scene
     
 ## Credits & Attributions:
 	Game built for GDPP S24,
@@ -22,4 +29,8 @@ Use WASD to move, E to collect ingredients, mouse to aim, and left click to wind
 	Fonts used: Cheese Pizza (https://www.1001fonts.com/cheese-pizza-font.html), Mouldy Cheese (https://www.fontspace.com/mouldy-cheese-font-f95405),
 	Parts of code for tossing from SpeedTutor Tutorial,
 	Parts of code for conveyor belt from Jayometric's conveyor belt code (https://github.com/Jayometric/3D-Conveyor-Belt-for-Unity/blob/main/ConveyorBelt)
+ 	Sound effects:
+  	- https://www.youtube.com/watch?v=UoSMKxjnleo
+   	- https://soundbible.com/749-Pitch-Baseball.html 
+    	- https://freesound.org/people/Hankof/sounds/655630/
     
