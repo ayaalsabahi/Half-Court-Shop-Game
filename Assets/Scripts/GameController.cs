@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         // you win!
-        SceneManager.LoadScene("WinScreen");
+        SceneManager.LoadScene("WinScene");
     }
 
     public void GoToKitchen()

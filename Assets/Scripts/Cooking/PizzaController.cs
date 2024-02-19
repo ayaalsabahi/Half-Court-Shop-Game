@@ -35,11 +35,11 @@ public class PizzaController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Pepperoni")
-        {
-            // Debug.Log("making pepperoni");
-            meshRenderer.material = pepperoniPizza;
-        }
+        // if (other.tag == "Pepperoni")
+        // {
+        //     // Debug.Log("making pepperoni");
+        //     meshRenderer.material = pepperoniPizza;
+        // }
 
         if (other.GetComponent<IngredientController>() != null)
         {

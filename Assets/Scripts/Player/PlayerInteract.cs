@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -17,6 +20,17 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    //Hand texts
+    [SerializeField]
+    public String hand;
+    public TMP_Text handText;
+
+    private void Start()
+    {
+        handText.gameObject.SetActive(false);
+    }
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -31,11 +45,13 @@ public class PlayerInteract : MonoBehaviour
                 //Debug.Log(interactable.promptMessage);
                 if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E)) && interactable.name != "Oven")
                 {
+                    handText.gameObject.SetActive(true);
                     GameObject ingredient = hitInfo.collider.gameObject;
                     //interactable.BaseInteract();
                     // Debug.Log("pick up " + ingredient);
                     // Debug.Log("and the the tag is " + ingredient.tag);
                     player.GetComponent<PlayerController>().inHand = interactable.tag;
+                    handText.text = "Current ingredient: " + interactable.tag;
                     Destroy(ingredient);
                 }
                 if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E)) && interactable.name == "Oven")

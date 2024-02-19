@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
+using System.Xml;
 
 public class PlayerController : MonoBehaviour
 {    
@@ -85,11 +86,11 @@ public class PlayerController : MonoBehaviour
     public AudioClip yayClip;
 
 
-    //Hand texts
-    //[SerializeField]
-    
 
 
+    [SerializeField]
+    public String ammo;
+    public TMP_Text ammoText;
 
     void Start()
     {
@@ -115,7 +116,10 @@ public class PlayerController : MonoBehaviour
         yaySound = gameObject.AddComponent<AudioSource>();
         yaySound.clip = yayClip;
         yaySound.loop = false;
+        yaySound.volume = 0.5f;
 
+        //texts
+        ammoText.gameObject.SetActive(false);
 
     }
 
@@ -135,6 +139,9 @@ public class PlayerController : MonoBehaviour
 
         if(inHand != "" && Input.GetKeyDown(KeyCode.Mouse0))
         {
+
+            ammoText.gameObject.SetActive(true);
+            
             FindThingToThrow();
             StartThrow();
 
@@ -242,7 +249,7 @@ public class PlayerController : MonoBehaviour
         trajectoryEnd.SetActive(false);
         ThrowObj(Mathf.Min(chargeTime * throwForce, maxForce));
         isCharging = false;
-        inHand = "";
+        //inHand = "";
         if(easyModeOn)
         {
             trajectoryLine.enabled = false;
@@ -339,5 +346,7 @@ public class PlayerController : MonoBehaviour
         timerText.text = Mathf.RoundToInt(MAX_TIME-timeElapsed).ToString();
         scoreText.text = "Score: " + score.ToString();
         strikeText.text = "Strikes: " + strikes.ToString();
+        
+        ammoText.text = "Ammo: ∞/5" + " ";
     }
 }

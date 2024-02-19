@@ -6,7 +6,7 @@ using UnityEngine;
 public class EndScreenController : MonoBehaviour
 {
     [SerializeField]
-    GameObject player;
+    GameObject scoreManager;
 
     [SerializeField]
     TMP_Text score;
@@ -17,9 +17,9 @@ public class EndScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerController pc = player.GetComponent<PlayerController>();
-        score.text = pc.score.ToString();
-        strikes.text = pc.strikes.ToString();
+        scoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
+        score.text = scoreManager.GetComponent<ScoreManager>().score.ToString();
+        strikes.text = scoreManager.GetComponent<ScoreManager>().strikes.ToString();
     }
 
     // Update is called once per frame
