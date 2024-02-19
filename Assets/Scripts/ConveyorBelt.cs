@@ -111,7 +111,8 @@ public class ConveyorBelt : MonoBehaviour
         ticketHolder.DeleteTicket(ticketKey);
 
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        playerController.score += pizza.GetComponent<PizzaController>().pointsToAdd;
+        // playerController.score += pizza.GetComponent<PizzaController>().pointsToAdd;
+        playerController.score += 1;
         playerController.IncrementPizzaBox();
 
         onBelt.Remove(pizza);

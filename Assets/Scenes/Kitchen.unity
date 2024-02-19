@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3881,11 +3881,17 @@ MonoBehaviour:
   scoreText: {fileID: 936370339}
   strikes: 0
   strikeText: {fileID: 245640951}
+<<<<<<< Updated upstream
   booClip: {fileID: 8300000, guid: a6c3d08b89dbf4195a4cfd2ad9822ffd, type: 3}
   wooshClip: {fileID: 8300000, guid: 0bd006a501e2748fb814d86cf40d83cc, type: 3}
   yayClip: {fileID: 8300000, guid: 0a9ac51d3dd0342d1b7f522d301c4123, type: 3}
   ammo: 
   ammoText: {fileID: 1837201571}
+=======
+  booClip: {fileID: 0}
+  wooshClip: {fileID: 0}
+  yayClip: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!114 &513708278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11209,6 +11215,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6172615371895695011, guid: d9df7585f19554cb5be2aecf5f8e9f19, type: 3}
   m_PrefabInstance: {fileID: 610204509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1633627506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633627507}
+  - component: {fileID: 1633627508}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1633627507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633627506}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1633627508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633627506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdbc3b147b73249efbe246f700542f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 513708277}
+  score: 0
+  strikes: 0
 --- !u!1001 &1648930620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15520,3 +15573,4 @@ SceneRoots:
   - {fileID: 927233817}
   - {fileID: 51309258}
   - {fileID: 1537844217}
+  - {fileID: 1633627507}
