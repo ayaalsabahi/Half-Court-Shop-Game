@@ -1714,8 +1714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45e0ef6d9d5f4f638d7ed6207e71f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensx: 1000
-  sensy: 1000
+  sensx: 500
+  sensy: 500
   orientation: {fileID: 1866084580}
 --- !u!4 &266172200
 Transform:
@@ -5378,7 +5378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1010418362
 Transform:
   m_ObjectHideFlags: 0
@@ -7231,6 +7231,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   player: {fileID: 1447191129}
+  hand: 
+  handText: {fileID: 0}
 --- !u!114 &1447191132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7270,6 +7272,9 @@ MonoBehaviour:
   booClip: {fileID: 0}
   wooshClip: {fileID: 0}
   yayClip: {fileID: 0}
+  tenToVicClip: {fileID: 0}
+  ammo: 
+  ammoText: {fileID: 0}
 --- !u!54 &1447191133
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8354,6 +8359,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   player: {fileID: 1689337167}
+  hand: 
+  handText: {fileID: 0}
 --- !u!114 &1689337170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8393,6 +8400,9 @@ MonoBehaviour:
   booClip: {fileID: 0}
   wooshClip: {fileID: 0}
   yayClip: {fileID: 0}
+  tenToVicClip: {fileID: 0}
+  ammo: 
+  ammoText: {fileID: 0}
 --- !u!54 &1689337171
 Rigidbody:
   m_ObjectHideFlags: 0

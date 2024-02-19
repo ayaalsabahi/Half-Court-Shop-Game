@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     //Timer
-    private float MAX_TIME = 60;
+    private float MAX_TIME = 93;
     private float timeElapsed;
     public TMP_Text timerText;
 
@@ -85,8 +85,12 @@ public class PlayerController : MonoBehaviour
     private AudioSource yaySound;
     public AudioClip yayClip;
 
+    private AudioSource splatSound;
+    public AudioClip splatClip;
 
-
+    private AudioSource tenToVic;
+    public AudioClip tenToVicClip;
+    private bool tentovicplaying = false;
 
     [SerializeField]
     public String ammo;
@@ -117,6 +121,8 @@ public class PlayerController : MonoBehaviour
         yaySound.clip = yayClip;
         yaySound.loop = false;
         yaySound.volume = 0.5f;
+
+        tentovicplaying = false;
 
         //texts
         ammoText.gameObject.SetActive(false);
@@ -161,13 +167,16 @@ public class PlayerController : MonoBehaviour
         if ( (MAX_TIME - timeElapsed) > 0)
         {
             UpdateUI();
+            if ((MAX_TIME - timeElapsed) <= 1 && !tentovicplaying)
+            {
+                //tenToVic.Play();
+            }
         }
         else
         {
             // end game
             GameController.S.EndGame();
         }
-
     }
 
     void FixedUpdate()
@@ -344,8 +353,8 @@ public class PlayerController : MonoBehaviour
     private void UpdateUI()
     {
         timerText.text = Mathf.RoundToInt(MAX_TIME-timeElapsed).ToString();
-        scoreText.text = "Score: " + score.ToString();
-        strikeText.text = "Strikes: " + strikes.ToString();
+        scoreText.text = "SCORE: " + score.ToString();
+        strikeText.text = "STRIKES: " + strikes.ToString();
         
         ammoText.text = "Ammo: ∞/5" + " ";
     }
