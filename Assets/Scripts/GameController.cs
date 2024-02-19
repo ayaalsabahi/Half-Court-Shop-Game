@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     public GameObject tutorial;
 
+    public GameObject ticketCanvas;
 
     //winner starts at being still playing
     private void Awake()
@@ -48,11 +49,6 @@ public class GameController : MonoBehaviour
         msgText = GameObject.FindGameObjectWithTag("MessageText").GetComponent<TMP_Text>();
         Time.timeScale = 0;
 
-        if (Input.GetKeyUp("E"))
-        {
-            tutorial.SetActive(false);
-            Time.timeScale = 1;
-        }
 
         StartCoroutine(ReadySetText());
     }
@@ -70,8 +66,18 @@ public class GameController : MonoBehaviour
     //        EndGame();
     //    }
 
-        
+
     //}
+
+    public void Update()
+    {
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            tutorial.SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
 
     public void EndGame()
     {
@@ -98,5 +104,7 @@ public class GameController : MonoBehaviour
         msgText.text = "THROW!";
         yield return new WaitForSeconds(1.0f);
         msgText.enabled = false;
+        Canvas ticketCanvas  = GameObject.FindGameObjectWithTag("TicketCanvas").GetComponent<Canvas>();
+        ticketCanvas.enabled = true;
     }
 }

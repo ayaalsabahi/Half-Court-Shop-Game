@@ -14,6 +14,7 @@ TagManager:
   - PizzaBoxSpawner
   - MessageText
   - TutorialBanner
+  - TicketCanvas
   layers:
   - Default
   - TransparentFX

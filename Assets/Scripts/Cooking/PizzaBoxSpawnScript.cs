@@ -14,7 +14,7 @@ public class PizzaBoxSpawnScript : MonoBehaviour
     public void SpawnPizzaBox()
     {
         Instantiate(pizzaBoxPrefab, transform.position, Quaternion.identity); // Spawn the pizza at the position of the GameObject this script is attached to
-        Vector3 temp = new Vector3(0.0f, 1.0f, 0);
+        Vector3 temp = new Vector3(0.0f, 0.3f, 0);
         transform.position += temp;
     }
 }
