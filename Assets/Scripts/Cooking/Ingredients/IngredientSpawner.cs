@@ -27,10 +27,10 @@ public class IngredientSpawner : MonoBehaviour
         }
 
         // Logging the count for debugging purposes
-        if (ingredientTag == "Pepperoni")
-        {
-            Debug.Log(currentIngredients.Count);
-        }
+        // if (ingredientTag == "Pepperoni")
+        // {
+        //     Debug.Log(currentIngredients.Count);
+        // }
     }
 
     private void SpawnIngredient()
@@ -57,6 +57,14 @@ public class IngredientSpawner : MonoBehaviour
         if (other.gameObject.CompareTag(ingredientTag))
         {
             currentIngredients.Add(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(ingredientTag))
+        {
+            currentIngredients.Remove(other.gameObject);
         }
     }
 

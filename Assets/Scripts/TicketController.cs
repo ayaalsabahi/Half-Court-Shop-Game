@@ -6,16 +6,17 @@ using TMPro;
 public class TicketController : MonoBehaviour
 {
     public List<string> ingredients;
-    
     [SerializeField]
     public TMP_Text ingredientsText;
-
     public int pointsToEarn;
+
+    // List to track matched ingredients for color change
+    private List<string> matchedIngredients = new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-        ingredientsText.text = OragnizeIngredients();
+        UpdateIngredientsDisplay();  // Updated to call the new method
     }
 
     // Update is called once per frame
@@ -24,14 +25,28 @@ public class TicketController : MonoBehaviour
         pointsToEarn = ingredients.Count;
     }
 
-    public string OragnizeIngredients()
+    // Updated method to organize ingredients and apply color changes to matched ones
+    public void UpdateIngredientsDisplay()
     {
-        string ans = "";
-        for(int i = 0; i < ingredients.Count; i++)
+        string displayText = "";
+        foreach (var ingredient in ingredients)
         {
-            ans += ingredients[i] + "\n";
+            if (matchedIngredients.Contains(ingredient))
+            {
+                displayText += "<color=green>" + ingredient + "</color>\n";  // Apply green color to matched ingredients
+            }
+            else
+            {
+                displayText += ingredient + "\n";  // Keep original color for unmatched ingredients
+            }
         }
-        return ans;
+        ingredientsText.text = displayText;
+    }
+
+    // Method to update matched ingredients list and refresh the display
+    public void SetMatchedIngredients(List<string> matches)
+    {
+        matchedIngredients = matches;
+        UpdateIngredientsDisplay();  // Refresh the ingredient display with updated matches
     }
 }
-//ans += "<color=green>" + ingredients[i] + "</color>" + "\n";
