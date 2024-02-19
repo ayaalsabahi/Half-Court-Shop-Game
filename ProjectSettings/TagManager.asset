@@ -12,6 +12,8 @@ TagManager:
   - Pineapple
   - Olive
   - PizzaBoxSpawner
+  - MessageText
+  - TutorialBanner
   layers:
   - Default
   - TransparentFX

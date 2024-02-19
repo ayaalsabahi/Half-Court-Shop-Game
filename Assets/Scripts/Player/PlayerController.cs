@@ -65,15 +65,13 @@ public class PlayerController : MonoBehaviour
 
     //Points
     [SerializeField]
-    public int score;
-    [SerializeField]
-    TMP_Text scoreText; 
+    public int score; 
+    public TMP_Text scoreText; 
 
     [SerializeField]
     public int strikes;
 
-    [SerializeField]
-    TMP_Text strikeText;
+    public TMP_Text strikeText;
 
 
     //music controls
@@ -95,9 +93,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
-        strikeText = GameObject.Find("Canvas").transform.GetChild(2).GetComponent<TMP_Text>();
-        timerText.text = "Fortnite";
+        //scoreText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<TMP_Text>();
+        //strikeText = GameObject.Find("Canvas").transform.GetChild(2).GetComponent<TMP_Text>();
         cam = GetComponent<PlayerInteract>().cam;
         trajectoryEnd.SetActive(false);
 
