@@ -73,14 +73,21 @@ public class PlayerController : MonoBehaviour
 
     public TMP_Text strikeText;
 
-    
-    
-    
+
+    //music controls
+    private AudioSource booSound;
+    public AudioClip booClip;
+
+    private AudioSource wooshSound;
+    public AudioClip wooshClip;
+
+    private AudioSource yaySound;
+    public AudioClip yayClip;
 
 
 
 
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -92,6 +99,21 @@ public class PlayerController : MonoBehaviour
         trajectoryEnd.SetActive(false);
 
         timeElapsed = 0.0f;
+
+        //sound
+        booSound = gameObject.AddComponent<AudioSource>();
+        booSound.clip = booClip;
+        booSound.loop = false;
+
+        wooshSound = gameObject.AddComponent<AudioSource>();
+        wooshSound.clip = wooshClip;
+        wooshSound.loop = false;
+
+        yaySound = gameObject.AddComponent<AudioSource>();
+        yaySound.clip = yayClip;
+        yaySound.loop = false;
+
+
     }
 
     void Update()
@@ -213,6 +235,7 @@ public class PlayerController : MonoBehaviour
 
     private void ReleaseBall()
     {
+        wooshSound.Play();
         trajectoryEnd.SetActive(false);
         ThrowObj(Mathf.Min(chargeTime * throwForce, maxForce));
         isCharging = false;
@@ -235,6 +258,7 @@ public class PlayerController : MonoBehaviour
         Vector3 initialVelocity = finalThrowDirection * force / itemRb.mass;
 
         itemRb.AddForce(initialVelocity, ForceMode.VelocityChange); // Apply initial velocity as force
+       
     }
 
     void ShowTrajectory(Vector3 origin, Vector3 initialVelocity)
@@ -298,11 +322,13 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("pizza should spawn");
         GameObject.FindGameObjectWithTag("PizzaBoxSpawner").GetComponent<PizzaBoxSpawnScript>().SpawnPizzaBox();
+        yaySound.Play();
     }
 
     public void IncrementStrikes()
     {
         strikes += 1;
+        booSound.Play();
     }
 
     private void UpdateUI()
