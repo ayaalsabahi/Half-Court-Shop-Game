@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
 
     public TMP_Text msgText;
 
+    //public ticking;
+
     public GameObject tutorial;
 
     public GameObject ticketCanvas;
